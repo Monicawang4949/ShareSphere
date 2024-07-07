@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 offset-md-1" style="background: blue">
+      <table>
+        <tr><th><%= link_to "発見", root_path %></th></tr>
+        <tr><th><%= link_to "投稿", root_path %></th></tr>
+        <tr><th><%= link_to "通知", root_path %></th></tr>
+        <tr><th><%= link_to "ShareShpereについて", about_path %></th></tr>
+      </table>
+    </div>
+
+    <div class="col-md-7 offset-md-1" style="background: grey">
+      <div class='row'>
+        <div class='col-md-2'>
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+        </div>
+        <div class='col-md-6'>
+          <%= @user.name %></br>
+          <%= @user.introduction %>
+        </div>
+      </div>
+      <div class='row-md-2'>
+        <% if current_user = @user %>
+          <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
+        <% end %>
+      </div>
+      <div class='row justify-content-center'>
+        <div class="col-md-5">
+          <h2>最近投稿</h2>
+          <div></div>
+        </div>
+        <div class="col-md-5">
+          <h2>最近いいねをした投稿</h2>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

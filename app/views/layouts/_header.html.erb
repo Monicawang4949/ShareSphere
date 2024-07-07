@@ -1,0 +1,31 @@
+<header>
+  <div class="container-fluid text-center">
+    <div class="row">
+      <% if user_signed_in? %>
+        <div class="col-md-1">
+          <%= link_to root_path do %>
+          <%= image_tag "logo.png", size: "62x39" %>
+          <% end %>
+        </div>
+        <div class="search_form col-md-5">
+        </div>
+        <div class="col-md-2 offset-md-3">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </div>
+        <div class="col-md-1">
+          <%= link_to user_path(current_user.id) do %>
+            <%= image_tag current_user.get_profile_image, class: "rounded-circle", size:'80x80' %>
+          <% end %>
+        </div>
+      <% elsif admin_signed_in? %>
+        <div class="col">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </div>
+      <% else %>
+        <div class="col">
+          <%= link_to "ログイン", new_user_session_path %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</header>
