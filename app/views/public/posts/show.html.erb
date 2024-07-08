@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 offset-md-1" style="background: blue">
+      <%= render 'public/users/sidebar' %>
+    </div>
+
+    <div class="col-md-7 offset-md-1" style="background: grey">
+      <div class='row'>
+        <div class="col-md-2 offset-md-3">
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+        </div>
+        <div class="col-md-3">
+          <%= @user.name %>
+        </div>
+      </div>
+      <div class='row'>
+        <div class="col-md-3 offset-md-3">
+          <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
+        </div>
+        <div class="col-md-3">
+          <div class='row'>
+            <%= @post.title %>
+          </div>
+          <div class='row'>
+            <%= @post.content %>
+          </div>
+        </div>
+        <div class='row justify-content-center'>
+          <% if current_user = @user %>
+            <%= link_to "編集", edit_post_path(@post), class: "btn btn-info btn-block", style: "width: 10%" %>
+            <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-block", style: "width: 10%" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

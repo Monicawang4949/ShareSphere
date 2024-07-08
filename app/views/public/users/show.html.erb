@@ -2,12 +2,7 @@
   <div class="row">
 
     <div class="col-md-2 offset-md-1" style="background: blue">
-      <table>
-        <tr><th><%= link_to "発見", root_path %></th></tr>
-        <tr><th><%= link_to "投稿", root_path %></th></tr>
-        <tr><th><%= link_to "通知", root_path %></th></tr>
-        <tr><th><%= link_to "ShareShpereについて", about_path %></th></tr>
-      </table>
+      <%= render 'sidebar' %>
     </div>
 
     <div class="col-md-7 offset-md-1" style="background: grey">
@@ -28,7 +23,22 @@
       <div class='row justify-content-center'>
         <div class="col-md-5">
           <h2>最近投稿</h2>
-          <div></div>
+          <% if @latest_post.blank? %>
+            <div class="row">
+              <p>最近の投稿がございません</p>
+            </div>
+          <% else %>
+            <%= link_to post_path(@latest_post) do %>
+              <%= image_tag @latest_post.get_post_image, style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
+            <% end %>
+            <div class="row">
+              <%= @latest_post.title %></br>
+              <%= @latest_post.content %>
+            </div>
+            <div class="row">
+              <%= link_to "投稿一覧", user_user_posts_path(@user), class: "btn btn-outline-secondary btn-block" %>
+            </div>
+          <% end %>
         </div>
         <div class="col-md-5">
           <h2>最近いいねをした投稿</h2>

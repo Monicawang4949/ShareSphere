@@ -4,6 +4,7 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @latest_post = @user.posts.order(created_at: :desc).first
   end
 
   def edit
@@ -20,7 +21,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   private

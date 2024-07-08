@@ -8,6 +8,7 @@
           <% end %>
         </div>
         <div class="search_form col-md-5">
+          <%= render 'layouts/search_form' %>
         </div>
         <div class="col-md-2 offset-md-3">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

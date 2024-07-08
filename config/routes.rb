@@ -13,7 +13,15 @@ Rails.application.routes.draw do
   get 'about' => 'homes#about'
 
   scope module: :public do
-    resources :users, only: [:index, :show, :edit,:update]
+    resources :users, only: [:index, :show, :edit,:update] do
+      get 'user_posts' => 'posts#user_posts'
+
+      collection do
+        get 'search'
+      end
+    end
+    resources :posts
+    get "search" => "searches#search"
   end
 
 end

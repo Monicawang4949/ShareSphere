@@ -1,0 +1,15 @@
+<table class='table table-hover table-inverse'>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to user do %>
+            <%= image_tag user.get_profile_image, class: "rounded-circle", size:'50x50' %>
+          <% end %>
+        </td>
+        <td><%= user.name %></td>
+        <td><%= user.introduction %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
