@@ -26,7 +26,7 @@
             <% if @posts.blank? %>
               <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
             <% else %>
-              <%= render 'public/posts/index', posts: @posts %>
+              <%= render 'admin/posts/index', posts: @posts %>
             <% end %>
           </div>
         </div>
@@ -35,7 +35,7 @@
             <% if @users.blank? %>
               <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
             <% else %>
-              <%= render 'public/users/index', users: @users %>
+              <%= render 'admin/users/index', users: @users %>
             <% end %>
           </div>
         </div>

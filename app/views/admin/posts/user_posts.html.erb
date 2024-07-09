@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-2 offset-md-1" style="background: blue">
+      <%= render 'admin/users/sidebar' %>
+    </div>
+
+    <div class="col-md-7 offset-md-1" style="background: grey">
+      <%= render 'index', posts: @user_posts %>
+    </div>
+
+  </div>
+</div>
