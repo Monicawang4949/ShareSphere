@@ -26,12 +26,12 @@
             <%= @post.content %>
           </div>
         </div>
-        <div class='row justify-content-center'>
-          <% if current_user = @user %>
-            <%= link_to "編集", edit_post_path(@post), class: "btn btn-info btn-block", style: "width: 10%" %>
-            <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-block", style: "width: 10%" %>
-          <% end %>
-        </div>
+      </div>
+      <div class='row justify-content-center'>
+        <% if current_user = @user %>
+          <%= link_to "編集", edit_post_path(@post), class: "btn btn-info", style: "width: 20%" %>
+          <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger", style: "width: 20%" %>
+        <% end %>
       </div>
     </div>
 
