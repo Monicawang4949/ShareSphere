@@ -1,18 +1,18 @@
 <div class="container-fluid">
   <div class="row-md-3 offset-md-3">
-    <h2 class="m-3">検索結果</h2>
+    <h2 class="m-5" style="color: white">検索結果</h2>
   </div>
   <div class="row justify-content-center">
     <div style="width: 50%">
       <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">投稿</button>
+          <button class="nav-link active btn btn-info" id="home-tab" style="font-size: 18px" data-toggle="tab" data-target="#post" type="button" role="tab" aria-controls="home" aria-selected="true">投稿</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">ユーザー</button>
+          <button class="nav-link btn btn-info" id="profile-tab" style="font-size: 18px" data-toggle="tab" data-target="#user" type="button" role="tab" aria-controls="profile" aria-selected="false">ユーザー</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="contact-tab" data-toggle="tab" data-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">タブ</button>
+          <button class="nav-link btn btn-info" id="contact-tab" style="font-size: 18px" data-toggle="tab" data-target="#tab" type="button" role="tab" aria-controls="contact" aria-selected="false">タブ</button>
         </li>
       </ul>
     </div>
@@ -21,7 +21,7 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="home-tab">
           <div class="row">
             <% if @posts.blank? %>
               <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
@@ -30,7 +30,7 @@
             <% end %>
           </div>
         </div>
-        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="profile-tab">
           <div class="row">
             <% if @users.blank? %>
               <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
@@ -40,7 +40,7 @@
           </div>
         </div>
       </div>
-        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="tab-pane fade" id="tab" role="tabpanel" aria-labelledby="contact-tab">
         </div>
       </div>
     </div>

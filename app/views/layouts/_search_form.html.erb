@@ -1,11 +1,19 @@
 <% if user_signed_in? %>
   <%= form_with url: search_path, local: true, method: :get do |f| %>
-    <%= f.text_field :q %>
-    <%= f.submit "検索", class: "btn btn-primary" %>
+  <div class="row mt-3">
+    <%= f.text_field :q, class: "col-md-9 form-control form-control", placeholder: "検索内容をここに" %>
+    <%= button_tag type: "submit", class: "btn btn-default" do %>
+      <i class="fa-sharp fa-solid fa-magnifying-glass ml-2" style="color: #74C0FC;"></i>
+    <% end %>
+  </div>
   <% end %>
 <% elsif admin_signed_in? %>
-  <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-    <%= f.text_field :q %>
-    <%= f.submit "検索", class: "btn btn-primary" %>
+  <%= form_with url: admin_search_path, class: "form-control form-control-lg", local: true, method: :get do |f| %>
+  <div class="row">
+    <%= f.text_field :q, class: "col-md-9 form-control form-control", placeholder: "検索内容をここに" %>
+    <%= button_tag type: "submit", class: "btn btn-default" do %>
+      <i class="fa-sharp fa-solid fa-magnifying-glass ml-2" style="color: #74C0FC;"></i>
+    <% end %>
+  </div>
   <% end %>
 <% end %>

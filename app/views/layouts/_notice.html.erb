@@ -1,12 +1,15 @@
 <% if notice %>
-  <div class="flash-message text-center">
-    <strong class="notice"><%= notice %></strong>
+  <p class="m-5 alert alert-primary alert-dismissible mx-auto text-center" style="background-color: rgba(0, 0, 0, 0); border-style: solid; border-radius: 10px; border-color: rgba(0, 255, 255, 1);">
+    <strong class="flash-message"><%= notice %></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </p>
+<% elsif alert %>
+  <p class="m-5 alert alert-primary alert-dismissible mx-auto text-center" style="background-color: rgba(0, 0, 0, 0); border-style: solid; border-radius: 10px; border-color: rgba(255, 89, 96, 1);">
+    <strong class="flash-message"><%= alert %></strong>
     <button type="button" class="close" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-  </div>
-<% elsif alert %>
-  <div class="flash-message text-center">
-    <strong class="alert"><%= alert %></strong>
-  </div>
+  </p>
 <% end %>
