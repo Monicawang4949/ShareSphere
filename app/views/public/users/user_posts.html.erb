@@ -2,11 +2,11 @@
   <div class="row">
 
     <div class="col-md-2 offset-md-1" style="background: blue">
-      <%= render 'public/users/sidebar' %>
+      <%= render 'sidebar' %>
     </div>
 
     <div class="col-md-7 offset-md-1" style="background: grey">
-      <%= render 'index', posts: @user_posts %>
+      <%= render 'public/posts/index', posts: @user_posts %>
     </div>
 
   </div>

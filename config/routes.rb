@@ -18,12 +18,16 @@ Rails.application.routes.draw do
     sessions: "public/sessions",
   }
 
+  devise_scope :user do
+    post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
   root to: 'homes#top'
   get 'about' => 'homes#about'
 
   scope module: :public do
     resources :users, only: [:index, :show, :edit, :update] do
-      get 'user_posts' => 'posts#user_posts'
+      get 'user_posts' => 'users#user_posts'
 
       collection do
         get 'search'

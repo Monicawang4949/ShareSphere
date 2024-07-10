@@ -2,13 +2,18 @@
   <tbody>
     <% posts.each do |post| %>
       <tr>
-        <td>
+        <td style='width: 25%'>
           <%= link_to post do %>
-            <%= image_tag post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
+            <%= image_tag post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;", class: "hover-zoom mb-3" %></br>
+          <% end %>
+          <%= link_to user_path(post.user) do %>
+            <%= image_tag post.user.get_profile_image, class: "rounded-circle mx-3", size:'30x30' %>
+            <%= post.user.name %>
           <% end %>
         </td>
-        <td><%= post.title %></td>
-        <td><%= post.content %></td>
+        <td style='width: 35%'><%= post.title %></td>
+        <td style='width: 15%'><%= "tab button" %></td>
+        <td style='width: 15%'><%= "likes button" %></td>
       </tr>
     <% end %>
   </tbody>

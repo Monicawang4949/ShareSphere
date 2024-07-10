@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_guest_user, only: [:edit, :update, :destroy, :new, :create]
 
   def index
     @posts = Post.all
@@ -42,14 +43,16 @@ class Public::PostsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def user_posts
-    @user_posts = current_user.posts
-  end
-
   private
 
   def post_params
     params.require(:post).permit(:title, :content, :post_image)
+  end
+
+  def ensure_guest_user
+    unless current_user.not_guest_user?
+      redirect_to root_path, notice: "ゲストユーザーは閲覧のみなので遷移できません"
+    end
   end
 
   def ensure_correct_user
