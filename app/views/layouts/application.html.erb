@@ -10,10 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="background: #000" >
+  <body style="background: linear-gradient(to left, #000033, #000000, #000033);">
     <%= render 'layouts/header' %>
     <%= render 'layouts/notice' %>
-    <%= yield %>
+    <div style="height: 900px">
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

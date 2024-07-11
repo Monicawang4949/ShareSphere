@@ -1,14 +1,12 @@
-<div class="container-fluid">
-  <div class="row">
+<div class="container-fluid text-center" style="color: white">
+  <div class="row" style="height: 900px">
 
-    <div class="col-md-2 offset-md-1" style="background: blue">
+    <div class="col-md-2 offset-md-1">
       <%= render 'public/users/sidebar' %>
     </div>
 
-    <div class="col-md-7 offset-md-1" style="background: grey">
-      <div class="col-md-8 offset-md-2">
-        <%= render 'form', obj: @post, post: @post %>
-      </div>
+    <div class="col-md-6">
+      <%= render 'form', obj: @post, post: @post %>
     </div>
 
   </div>

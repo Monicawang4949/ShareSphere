@@ -1,53 +1,72 @@
-<div class="container-fluid">
+<div class="container-fluid text-center" style="color: white">
   <div class="row">
 
-    <div class="col-md-2 offset-md-1" style="background: blue">
+    <div class="col-md-2 offset-md-1">
       <%= render 'sidebar' %>
     </div>
 
-    <div class="col-md-7 offset-md-1" style="background: grey">
+    <div class="col-md-8">
+
       <div class='row'>
-        <div class='col-md-2'>
+        <div class='col-md-1 mr-3'>
           <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
         </div>
-        <div class='col-md-6'>
+        <div class='col-md-3' style="font-size: 18px">
           <%= @user.name %></br>
           <%= @user.introduction %>
         </div>
       </div>
-      <div class='row-md-2'>
+      <div class='row my-3'>
         <% if current_user.not_guest_user? %>
           <% if current_user = @user %>
-            <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-secondary btn-block" %>
+            <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-info m-3" %>
           <% end %>
         <% end %>
       </div>
-      <div class='row justify-content-center'>
-        <div class="col-md-5">
-          <h2>最近投稿</h2>
-          <% if @latest_post.blank? %>
-            <div class="row">
-              <p>最近の投稿がございません</p>
-            </div>
-          <% else %>
-            <%= link_to post_path(@latest_post) do %>
-              <%= image_tag @latest_post.get_post_image, style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
+
+      <ul class="nav nav-pills nav-fill mt-5" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active btn btn-info" id="post-tab" style="font-size: 18px" data-toggle="tab" data-target="#post" type="button" role="tab" aria-controls="post" aria-selected="true">最近投稿</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link btn btn-info" id="user-tab" style="font-size: 18px" data-toggle="tab" data-target="#user" type="button" role="tab" aria-controls="user" aria-selected="false">最近いいねをした投稿</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
+            <% if @latest_post.blank? %>
+              <div class="row p-5">
+                <p class="col-md-8 mt-5">最近の投稿がございません</p>
+                <p class="col offset-md-1 mt-5"></p>
+              </div>
+            <% else %>
+              <div class="row">
+                <div class="col-md-2">
+                  <%= link_to post_path(@latest_post) do %>
+                    <%= image_tag @latest_post.get_post_image, class: "hover-zoom my-5", style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
+                  <% end %>
+                </div>
+                <div class="col-md-8 m-5">
+                  <div class="row m-5">
+                    <%= @latest_post.title %>
+                  </div>
+                  <div class="row m-5">
+                    <%= @latest_post.content %>
+                  </div>
+                </div>
+              </div>
+              <div class="row pl-5">
+                <%= link_to "投稿一覧", user_user_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
+              </div>
             <% end %>
-            <div class="row">
-              <%= @latest_post.title %></br>
-              <%= @latest_post.content %>
-            </div>
-            <div class="row">
-              <%= link_to "投稿一覧", user_user_posts_path(@user), class: "btn btn-outline-secondary btn-block" %>
-            </div>
-          <% end %>
         </div>
-        <div class="col-md-5">
-          <h2>最近いいねをした投稿</h2>
-          <div></div>
+        <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
+          <div class="row"></div>
         </div>
       </div>
-    </div>
 
+    </div>
   </div>
+
 </div>

@@ -1,35 +1,38 @@
-<div class="container-fluid">
+<div class="container-fluid text-center" style="color: white">
   <div class="row">
 
-    <div class="col-md-2 offset-md-1" style="background: blue">
+    <div class="col-md-2 offset-md-1">
       <%= render 'admin/users/sidebar' %>
     </div>
 
-    <div class="col-md-7 offset-md-1" style="background: grey">
+    <div class="col-md-5">
       <div class='row'>
-        <div class="col-md-2 offset-md-3">
-          <%= link_to admin_user_path(@user) do %>
-            <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
-          <% end %>
-        </div>
-        <div class="col-md-3">
-          <%= @user.name %>
-        </div>
-      </div>
-      <div class='row'>
-        <div class="col-md-3 offset-md-3">
+        <div class='col-md-2'>
           <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
         </div>
-        <div class="col-md-3">
-          <div class='row'>
-            <%= @post.title %>
-          </div>
-          <div class='row'>
-            <%= @post.content %>
-          </div>
+        <div class='col-md-3'>
+          <%= @post.title %>
         </div>
+        <div class='col-md-7'></div>
+      </div>
+      <div class='row p-5'>
+        <%= @post.content %>
       </div>
     </div>
+
+    <div class="col-md-2">
+      <div class='row'>
+        <%= link_to admin_user_path(@user) do %>
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+        <% end %>
+      </div>
+      <div class='row p-4'>
+        <%= link_to admin_user_path(@user), style: "color: #0dcaf0" do %>
+          <%= @user.name %>
+        <% end %>
+      </div>
+    </div>
+
 
   </div>
 </div>

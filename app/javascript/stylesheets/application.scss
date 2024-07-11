@@ -1,8 +1,8 @@
 @use '~bootstrap/scss/bootstrap';
 
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 #top-h1:after {
@@ -11,15 +11,11 @@
     top: 300;
     left: 50%;
     transform: translateX(-50%);
-    /* 透明色 */
     color: transparent;
     background-image: linear-gradient(to right, #c23616, #192a56, #00d2d3, yellow,
     #6d214f, #2e86de,#4cd137, #e84118);
-    /* 背景绘制区域，值为text时，给文字设置镂空效果，前提必须是文字颜色为透明色 */
     background-clip: text;
-    /* 谷歌浏览器私有属性 */
     -webkit-background-clip: text;
-    /* 使用裁切方法创建元素的可显示区域 circle表示裁切一个圆形 100px表示圆的直径 0%和50%表示圆心位置 直径和圆心两组值中间用at隔开*/
     clip-path: circle(200px at 50% 50%);
     -webkit-clip-path: circle(200px at 50% 50%);
     animation: move 5s infinite;
@@ -45,9 +41,44 @@
 
 
 .hover-zoom:hover {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .flash-message {
-  color: white;
+    color: white;
+}
+
+#notice {
+    background-color: rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgba(0, 255, 255, 1);
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+#alert {
+    background-color: rgba(0, 0, 0, 0);
+    border-style: solid;
+    border-radius: 10px;
+    border-color: rgba(255, 89, 96, 1);
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.sidebar_link {
+    text-decoration: none;
+    color: #0dcaf0;
+    font-size: 18px
+}
+.sidebar_link:hover {
+    text-decoration: none;
+    color: #9BF9CC;
+    font-size: 20px;
 }

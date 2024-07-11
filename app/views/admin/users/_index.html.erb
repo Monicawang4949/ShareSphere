@@ -1,4 +1,4 @@
-<table class='table table-hover table-inverse'>
+<table class='table table-inverse' style="color: white; font-size: 18px">
   <tbody>
     <% users.each do |user| %>
       <tr>
@@ -7,7 +7,11 @@
             <%= image_tag user.get_profile_image, class: "rounded-circle", size:'50x50' %>
           <% end %>
         </td>
-        <td><%= user.name %></td>
+        <td>
+          <%= link_to admin_user_path(user), style: "color: #0dcaf0" do %>
+            <%= user.name %>
+          <% end %>
+        </td>
         <td><%= user.introduction %></td>
       </tr>
     <% end %>

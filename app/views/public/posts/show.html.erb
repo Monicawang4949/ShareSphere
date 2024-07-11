@@ -1,43 +1,51 @@
-<div class="container-fluid">
+<div class="container-fluid text-center" style="color: white">
   <div class="row">
 
-    <div class="col-md-2 offset-md-1" style="background: blue">
+    <div class="col-md-2 offset-md-1">
       <%= render 'public/users/sidebar' %>
     </div>
 
-    <div class="col-md-7 offset-md-1" style="background: grey">
+    <div class="col-md-5">
       <div class='row'>
-        <div class="col-md-2 offset-md-3">
-          <%= link_to user_path(@user) do %>
-            <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
-          <% end %>
-        </div>
-        <div class="col-md-3">
-          <%= @user.name %>
-        </div>
-      </div>
-      <div class='row'>
-        <div class="col-md-3 offset-md-3">
+        <div class='col-md-2'>
           <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
         </div>
-        <div class="col-md-3">
-          <div class='row'>
-            <%= @post.title %>
-          </div>
-          <div class='row'>
-            <%= @post.content %>
-          </div>
+        <div class='col-md-3'>
+          <%= @post.title %>
+        </div>
+        <div class='col-md-7'>
+          <% if current_user.not_guest_user? %>
+            <% if current_user = @user %>
+              <%= link_to edit_post_path(@post), class: "btn btn-outline-info m-5", style: "width: 15%" do %>
+                <i class="fa-regular fa-pen-to-square" style="color: #74C0FC;"> 編集</i>
+              <% end %></br>
+              <%= link_to @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger", style: "width: 15%" do %>
+                <i class="fa-regular fa-trash-can" style="color: #dc3545;"> 削除</i>
+              <% end %></br>
+            <% end %>
+          <% end %>
         </div>
       </div>
-      <div class='row justify-content-center'>
-        <% if current_user.not_guest_user? %>
-          <% if current_user = @user %>
-            <%= link_to "編集", edit_post_path(@post), class: "btn btn-info", style: "width: 20%" %>
-            <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger", style: "width: 20%" %>
-          <% end %>
+      <div class='row p-5'>
+        <%= @post.content %>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <div class='row'>
+        <%= link_to user_path(@user) do %>
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+        <% end %>
+      </div>
+      <div class='row p-4'>
+        <%= link_to user_path(@user), style: "color: #0dcaf0" do %>
+          <%= @user.name %>
         <% end %>
       </div>
     </div>
 
+
   </div>
 </div>
+
+

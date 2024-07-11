@@ -1,34 +1,42 @@
-<h2>Sign up</h2>
+<div class="container-fluid text-center" style="color: white">
+  <div class="row pt-5">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+    <div class="col-md-2 offset-md-5 mt-4">
+      <h2>ユーザー新規登録</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+        <div class="field form-group m-4">
+          <p>ユーザー名</p>
+          <%= f.text_field :name, class: "form-control form-control-lg", autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <div class="field form-group m-4">
+          <p>メールアドレス</p>
+          <%= f.email_field :email, class: "form-control form-control-lg", autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field form-group m-4">
+          <p>パスワード(6文字以上)</p>
+          <%= f.password_field :password, class: "form-control form-control-lg", autocomplete: "current-password" %>
+        </div>
+
+        <div class="field form-group m-4">
+          <p>パスワードをもう一度入力してください</p>
+          <%= f.password_field :password_confirmation, class: "form-control form-control-lg", autocomplete: "new-password" %>
+        </div>
+
+        <div class="actions form-group m-5">
+          <%= f.submit "新規登録",class: 'btn btn-outline-info btn-lg', style: 'width: 40%' %>
+        </div>
+
+      <% end %>
+
+      <div class="">
+        <%= link_to "こちらでログイン", new_user_session_path, class: "btn btn-outline-info btn-sm my-2", type: "button" %>
+      </div>
+    </div>
+
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up",class: 'btn btn-success btn-block mt-3' %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
