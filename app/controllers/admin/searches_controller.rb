@@ -3,7 +3,12 @@ class Admin::SearchesController < ApplicationController
 
   def search
     @q = params[:q]
-    @users = User.ransack(name_cont: @q).result
-    @posts = Post.ransack(content_cont: @q).result
+    if params[:q].present?
+      @users = User.ransack(name_cont: @q).result
+      @posts = Post.ransack(content_cont: @q).result
+    else
+      @users = []
+      @posts = []
+    end
   end
 end
