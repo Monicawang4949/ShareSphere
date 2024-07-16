@@ -1,0 +1,18 @@
+<div class="container-fluid text-center" style="color: white">
+  <div class="row">
+
+    <div class="col-md-2 offset-md-1">
+      <%= render 'public/users/sidebar' %>
+    </div>
+
+    <div class="col-md-8">
+      <h2><%= link_to @user.name, user_path(@user), style: "text-decoration: none; color: #0dcaf0" %> さんのフォローワー</h2>
+      <% if @users.exists? %>
+        <%= render "public/users/index", users: @users %>
+      <% else %>
+        <p class="mt-5">ユーザーはいません</p>
+      <% end %>
+    </div>
+
+  </div>
+</div>

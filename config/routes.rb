@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-  end
-  namespace :admin do
-    get 'users/index'
-    get 'users/show'
-    get 'users/edit'
-  end
   devise_for :admin, controllers: {
     sessions: "admin/sessions",
   }
@@ -30,6 +21,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update] do
       get 'user_posts' => 'posts#user_posts'
       get 'user_favorite_posts' => 'posts#user_favorite_posts'
+      resource :relationships, only: [:create, :destroy]
+        get "followings" => "relationships#followings", as: "followings"
+        get "followers" => "relationships#followers", as: "followers"
     end
     resources :posts do
       resource :favorites, only: [:create, :destroy]
@@ -42,6 +36,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :update] do
       get 'user_posts' => 'posts#user_posts'
       get 'user_favorite_posts' => 'posts#user_favorite_posts'
+      get "followings" => "relationships#followings", as: "followings"
+      get "followers" => "relationships#followers", as: "followers"
     end
     resources :posts, only: [:index, :show]
     get "search" => "searches#search"

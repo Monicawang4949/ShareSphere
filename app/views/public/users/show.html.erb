@@ -15,12 +15,22 @@
           <%= @user.name %></br>
           <%= @user.introduction %>
         </div>
+        <div class='col-md-2 offset-md-4'>
+          <p>フォロー数</p>
+          <p><%= link_to @user.followings.count, admin_user_followings_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
+          <p>フォロワー数</p>
+          <p><%= link_to @user.followers.count, admin_user_followers_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
+        </div>
       </div>
       <div class='row my-3'>
         <% if current_user.not_guest_user? %>
-          <% if current_user = @user %>
+          <% if current_user == @user %>
             <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-info m-3" %>
+          <% else %>
+            <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
           <% end %>
+        <% else %>
+          <% "" %>
         <% end %>
       </div>
 

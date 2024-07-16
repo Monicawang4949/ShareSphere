@@ -13,9 +13,4 @@ class Public::FavoritesController < ApplicationController
     favorite.destroy
     redirect_to request.referer
   end
-
-  def index
-    user = User.find(params[:id])
-    @favorite_posts = user.favorite.post.all
-  end
 end

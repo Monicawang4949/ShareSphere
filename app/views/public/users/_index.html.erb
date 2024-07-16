@@ -1,4 +1,4 @@
-<table class='table table-inverse' style="color: white; font-size: 18px">
+<table class='table table-inverse' style="color: white;">
   <tbody>
     <% users.each do |user| %>
       <tr>
@@ -13,6 +13,10 @@
           <% end %>
         </td>
         <td><%= user.introduction %></td>
+        <td>
+          フォロー <%= link_to user.followings.count, user_followings_path(user), style: "text-decoration: none; color: #0dcaf0" %><br>
+          フォロワー <%= link_to user.followers.count, user_followers_path(user), style: "text-decoration: none; color: #0dcaf0" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
