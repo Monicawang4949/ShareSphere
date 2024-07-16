@@ -13,4 +13,9 @@ class Admin::PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @user_posts = @user.posts
   end
+
+  def user_favorite_posts
+    user = User.find(params[:user_id])
+    @user_favorites = user.favorites
+  end
 end

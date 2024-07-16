@@ -18,6 +18,9 @@
       <div class='row p-5'>
         <%= @post.content %>
       </div>
+      <div class='row p-5'>
+        <span>いいね数（<%= @post.favorites.count %>）</span>
+      </div>
     </div>
 
     <div class="col-md-2">

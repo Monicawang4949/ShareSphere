@@ -1,0 +1,31 @@
+<div class="container-fluid text-center" style="color: white">
+  <div class="row">
+
+    <div class="col-md-2 offset-md-1">
+      <%= render 'public/users/sidebar' %>
+    </div>
+
+    <div class="col-md-8">
+      <table class='table table-inverse' style="color: white; font-size: 18px">
+        <tbody>
+          <% @user_favorites.each do |user_favorite| %>
+            <tr>
+              <td style='width: 25%'>
+                <%= link_to user_favorite.post do %>
+                  <%= image_tag user_favorite.post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;", class: "hover-zoom mb-3" %></br>
+                <% end %>
+                <%= link_to user_path(user_favorite.post.user), style: "color: #0dcaf0" do %>
+                  <%= image_tag user_favorite.post.user.get_profile_image, class: "rounded-circle mx-3", size:'30x30' %>
+                  <%= user_favorite.post.user.name %>
+                <% end %>
+              </td>
+              <td style='width: 35%'><%= user_favorite.post.title %></td>
+              <td style='width: 15%'><%= "tab button" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

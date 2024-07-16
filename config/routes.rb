@@ -25,21 +25,23 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get 'about' => 'homes#about'
 
+# ユーザー側
   scope module: :public do
     resources :users, only: [:index, :show, :edit, :update] do
-      get 'user_posts' => 'users#user_posts'
-
-      collection do
-        get 'search'
-      end
+      get 'user_posts' => 'posts#user_posts'
+      get 'user_favorite_posts' => 'posts#user_favorite_posts'
     end
-    resources :posts
+    resources :posts do
+      resource :favorites, only: [:create, :destroy]
+    end
     get "search" => "searches#search"
   end
 
+# 管理者側
   namespace :admin do
     resources :users, only: [:index, :show, :update] do
       get 'user_posts' => 'posts#user_posts'
+      get 'user_favorite_posts' => 'posts#user_favorite_posts'
     end
     resources :posts, only: [:index, :show]
     get "search" => "searches#search"

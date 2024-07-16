@@ -13,7 +13,7 @@
         </td>
         <td style='width: 35%'><%= post.title %></td>
         <td style='width: 15%'><%= "tab button" %></td>
-        <td style='width: 15%'><%= "likes button" %></td>
+        <td style='width: 15%'><%= render "public/favorites/btn", post: post %></td>
       </tr>
     <% end %>
   </tbody>

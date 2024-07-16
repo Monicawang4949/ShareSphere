@@ -6,6 +6,10 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @latest_post = @user.posts.order(created_at: :desc).first
+    latest_favorite = @user.favorites.order(created_at: :desc).first
+    unless latest_favorite.blank?
+      @latest_favorite_post = latest_favorite.post
+    end
   end
 
   def edit
@@ -23,11 +27,6 @@ class Public::UsersController < ApplicationController
 
   def index
     @users = User.all
-  end
-
-  def user_posts
-    user = User.find(params[:user_id])
-    @user_posts = user.posts
   end
 
   private

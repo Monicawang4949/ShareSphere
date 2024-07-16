@@ -13,6 +13,7 @@
         </td>
         <td style='width: 35%'><%= post.title %></td>
         <td style='width: 35%'><%= post.content %></td>
+        <td style='width: 15%'>いいね数（<%= post.favorites.count %>）</td>
       </tr>
     <% end %>
   </tbody>

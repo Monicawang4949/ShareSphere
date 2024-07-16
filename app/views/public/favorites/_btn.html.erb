@@ -1,0 +1,11 @@
+<% if post.favorited_by?(current_user) %>
+  <%= link_to post_favorites_path(post), style: "color: #0dcaf0; text-decoration: none", method: :delete do %>
+    <i class="fa-solid fa-heart" style="color: #74C0FC;"></i>
+    <%= post.favorites.count %> いいね
+  <% end %>
+<% else %>
+  <%= link_to post_favorites_path(post), style: "color: #0dcaf0; text-decoration: none", method: :post do %>
+    <i class="fa-regular fa-heart" style="color: #74C0FC;"></i>
+    <%= post.favorites.count %> いいね
+  <% end %>
+<% end %>

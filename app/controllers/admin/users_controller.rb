@@ -8,6 +8,10 @@ class Admin::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @latest_post = @user.posts.order(created_at: :desc).first
+    latest_favorite = @user.favorites.order(created_at: :desc).first
+    unless latest_favorite.blank?
+      @latest_favorite_post = latest_favorite.post
+    end
   end
 
   def update
