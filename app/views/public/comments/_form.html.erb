@@ -1,0 +1,4 @@
+<%= form_with model: [post, comment] do |f| %>
+  <%= f.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
+  <%= f.submit "送信",class: 'btn btn-outline-info' %>
+<% end %>

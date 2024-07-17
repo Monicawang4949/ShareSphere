@@ -1,20 +1,30 @@
-<table class='table table-inverse' style="color: white; font-size: 18px">
-  <tbody>
-    <% posts.each do |post| %>
-      <tr>
-        <td style='width: 25%'>
-          <%= link_to post do %>
-            <%= image_tag post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;", class: "hover-zoom mb-3" %></br>
-          <% end %>
-          <%= link_to user_path(post.user), style: "color: #0dcaf0" do %>
-            <%= image_tag post.user.get_profile_image, class: "rounded-circle mx-3", size:'30x30' %>
-            <%= post.user.name %>
-          <% end %>
-        </td>
-        <td style='width: 35%'><%= post.title %></td>
-        <td style='width: 15%'><%= "tab button" %></td>
-        <td style='width: 15%'><%= render "public/favorites/btn", post: post %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% posts.each do |post| %>
+  <div class="d-flex flex-row p-3">
+    <div class='col mt-4'>
+      <div class='row'>
+        <%= link_to post do %>
+          <%= image_tag post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;", class: "hover-zoom mb-3" %>
+        <% end %>
+      </div>
+      <div class='row'>
+        <%= link_to user_path(post.user), style: "color: #0dcaf0" do %>
+          <%= image_tag post.user.get_profile_image, class: "rounded-circle mx-3", size:'30x30' %>
+          <%= post.user.name %>
+        <% end %>
+      </div>
+      <div class='row mx-3'>
+        <%= post.title %>
+      </div>
+     <div class='row mx-3'>
+        <%= "tab button" %>
+      </div>
+      <div class='row mx-3'>
+        <%= render "public/favorites/btn", post: post %>
+      </div>
+      <div class='row mx-3'>
+        <p>コメント（<%= post.comments.count %>）</p>
+      </div>
+    </div>
+  </div>
+<% end %>
+

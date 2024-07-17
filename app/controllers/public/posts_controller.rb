@@ -24,6 +24,7 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
+    @comment = Comment.new
   end
 
   def edit
@@ -61,7 +62,7 @@ class Public::PostsController < ApplicationController
 
   def ensure_guest_user
     unless current_user.not_guest_user?
-      redirect_to root_path, notice: "ゲストユーザーは閲覧のみなので遷移できません"
+      redirect_to request.referer, notice: "ゲストユーザーは閲覧のみでございます"
     end
   end
 

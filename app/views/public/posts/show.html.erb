@@ -26,11 +26,12 @@
           <% end %>
         </div>
       </div>
-      <div class='row p-5'>
+      <div class='row p-3'>
         <%= @post.content %>
       </div>
-      <div class='row p-5'>
-        <%= render "public/favorites/btn", post: @post %>
+      <div class='row p-3'>
+        <p class='mr-3'><%= render "public/favorites/btn", post: @post %></p>
+        <p>コメント数（<%= @post.comments.count %>）</p>
       </div>
     </div>
 
@@ -47,7 +48,16 @@
       </div>
     </div>
 
-
+  </div>
+  <div class="row" style="height: 400px">
+    <div class="col-md-5 offset-md-3 pl-3">
+      <%= render "public/comments/index", post: @post %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <%= render "public/comments/form", post: @post, comment: @comment %>
+    </div>
   </div>
 </div>
 

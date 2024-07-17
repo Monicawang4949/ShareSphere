@@ -1,0 +1,20 @@
+<table class='' style="color: white; font-size: 18px">
+  <tbody>
+    <% post.comments.each do |comment| %>
+    <tr>
+      <td class='py-2'>
+        <%= link_to user_path(comment.user), style: "color: #0dcaf0" do %>
+          <%= image_tag comment.user.get_profile_image, class: "rounded-circle mx-2", size:'30x30' %>
+          <%= comment.user.name %>
+        <% end %>
+      </td>
+      <td class='pl-4'><%= comment.content %></td>
+      <td>
+        <% if comment.user == current_user %>
+          <%= link_to "削除", post_comment_path(post, comment), method: :delete, class: "btn btn-sm btn-outline-danger ml-5", style: "" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

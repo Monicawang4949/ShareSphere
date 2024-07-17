@@ -19,7 +19,12 @@
         <%= @post.content %>
       </div>
       <div class='row p-5'>
-        <span>いいね数（<%= @post.favorites.count %>）</span>
+        <span>
+          <%= link_to admin_user_user_favorite_posts_path(@user), style: "color: #0dcaf0; text-decoration: none" do %>
+            いいね数（<%= @post.favorites.count %>）
+          <% end %>
+          コメント数（<%= @post.comments.count %>）
+        </span>
       </div>
     </div>
 
@@ -35,7 +40,10 @@
         <% end %>
       </div>
     </div>
-
-
+  </div>
+  <div class="row" style="height: 400px">
+    <div class="col-md-5 offset-md-3 pl-3">
+      <%= render "admin/comments/index", post: @post %>
+    </div>
   </div>
 </div>
