@@ -3,14 +3,14 @@
     <% post.comments.each do |comment| %>
     <tr>
       <td class='py-2'>
-        <%= link_to user_path(comment.user), style: "color: #0dcaf0" do %>
+        <%= link_to admin_user_path(comment.user), style: "color: #0dcaf0" do %>
           <%= image_tag comment.user.get_profile_image, class: "rounded-circle mx-2", size:'30x30' %>
           <%= comment.user.name %>
         <% end %>
       </td>
       <td class='pl-4'><%= comment.content %></td>
       <td>
-        <%= link_to "削除", post_comment_path(post, comment), method: :delete, class: "btn btn-sm btn-outline-danger ml-5", style: "" %>
+        <%= link_to "削除", admin_post_comment_path(post, comment), method: :delete, class: "btn btn-sm btn-outline-danger ml-5", style: "" %>
       </td>
     </tr>
     <% end %>

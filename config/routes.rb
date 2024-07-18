@@ -40,8 +40,11 @@ Rails.application.routes.draw do
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
     end
-    resources :posts, only: [:index, :show]
+    resources :posts, only: [:index, :show] do
+      resources :comments, only: [:destroy]
+    end
     get "search" => "searches#search"
+
   end
 
 end
