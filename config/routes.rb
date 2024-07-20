@@ -43,8 +43,10 @@ Rails.application.routes.draw do
     end
     resources :posts, only: [:index, :show] do
       resources :comments, only: [:destroy]
+      get 'tag_posts' => 'posts#tag_posts'
     end
     get "search" => "searches#search"
+    resources :tags, only: [:index]
 
   end
 

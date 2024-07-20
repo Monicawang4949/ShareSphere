@@ -10,7 +10,7 @@
         <div class='col-md-2'>
           <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
         </div>
-        <div class='col-md-3'>
+        <div class='col-md-3 mt-5'>
           <%= @post.title %>
         </div>
         <div class='col-md-7'>
@@ -51,19 +51,19 @@
         <% end %>
       </div>
       <div class='row p-4'>
-        <%= link_to user_path(@user), style: "color: #0dcaf0" do %>
+        <%= link_to user_path(@user), style: " text-decoration: none; color: #0dcaf0" do %>
           <%= @user.name %>
         <% end %>
       </div>
     </div>
 
   </div>
-  <div class="row" style="height: 400px">
+  <div class="row" style="height: 300px">
     <div class="col-md-5 offset-md-3 pl-3">
       <%= render "public/comments/index", post: @post %>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-md-4 offset-md-4">
       <%= render "public/comments/form", post: @post, comment: @comment %>
     </div>

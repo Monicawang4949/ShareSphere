@@ -1,6 +1,7 @@
 <table class='table table-borderless' style="color: white; font-size: 18px">
   <thead>
     <tr>
+      <th>ID</th>
       <th>タグ名</th>
       <th></th>
     </tr>
@@ -8,14 +9,15 @@
   <tbody>
     <% tags.each do |tag| %>
       <tr>
+        <td style="width: 10%"><%= tag.id %></td>
         <td style="width: 20%">
-          <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+          <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
             <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
           <% end %>
         </td>
         <td style="width: 20%">
           関連投稿
-          <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+          <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
             (<%= tag.posts.count %>)
           <% end %>
         </td>

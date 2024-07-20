@@ -1,6 +1,6 @@
 <table class="table table-borderless">
   <tr><th><%= link_to "会員一覧", admin_users_path, class: "sidebar_link" %></th></tr>
   <tr><th><%= link_to "投稿一覧", admin_posts_path, class: "sidebar_link" %></th></tr>
-  <tr><th><%= link_to "タブ一覧", root_path, class: "sidebar_link" %></th></tr>
+  <tr><th><%= link_to "タブ一覧", admin_tags_path, class: "sidebar_link" %></th></tr>
   <tr><th><%= link_to "ログアウト", destroy_admin_session_path, class: "sidebar_link", method: :delete %></th></tr>
 </table>

@@ -1,7 +1,17 @@
 <table class='table table-inverse' style="color: white; font-size: 18px">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>アイコン</th>
+      <th>ユーザー名</th>
+      <th>自己紹介</th>
+      <th>フォローとフォロワー</th>
+    </tr>
+  </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
         <td>
           <%= link_to admin_user_path(user) do %>
             <%= image_tag user.get_profile_image, class: "rounded-circle", size:'50x50' %>

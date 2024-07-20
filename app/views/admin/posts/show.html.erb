@@ -7,22 +7,29 @@
 
     <div class="col-md-5">
       <div class='row'>
-        <div class='col-md-2'>
+        <div class='col-md-3'>
           <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
         </div>
-        <div class='col-md-3'>
+        <div class='col-md-4 mt-5' style=" color: white">
           <%= @post.title %>
         </div>
-        <div class='col-md-7'></div>
+        <div class='col-md-4'></div>
       </div>
       <div class='row p-5'>
         <%= @post.content %>
       </div>
+      <div class='row pl-3'>
+        <% @post.tags.each do |tag| %>
+          <div class='pl-1 ml-2'>
+            <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+              <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
       <div class='row p-5'>
         <span>
-          <%= link_to admin_user_user_favorite_posts_path(@user), style: "color: #0dcaf0; text-decoration: none" do %>
-            いいね数（<%= @post.favorites.count %>）
-          <% end %>
+          いいね数（<%= @post.favorites.count %>）
           コメント数（<%= @post.comments.count %>）
         </span>
       </div>
@@ -35,7 +42,7 @@
         <% end %>
       </div>
       <div class='row p-4'>
-        <%= link_to admin_user_path(@user), style: "color: #0dcaf0" do %>
+        <%= link_to admin_user_path(@user), style: " text-decoration: none; color: #0dcaf0" do %>
           <%= @user.name %>
         <% end %>
       </div>

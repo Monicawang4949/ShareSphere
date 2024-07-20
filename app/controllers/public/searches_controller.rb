@@ -10,6 +10,7 @@ class Public::SearchesController < ApplicationController
     else
       @users = []
       @posts = []
+      @tags = []
     end
   end
 end

@@ -6,7 +6,12 @@
     </div>
 
     <div class="col-md-8">
-      <%= render 'index', posts: @user_posts %>
+      <div class="row">
+        <h2 class="col-md-5 p-4">ユーザー投稿一覧</h2>
+      </div>
+      <div class="row">
+        <%= render 'index', posts: @user_posts %>
+      </div>
     </div>
 
   </div>

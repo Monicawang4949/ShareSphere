@@ -6,7 +6,12 @@
     </div>
 
     <div class="col-md-8">
-      <%= render 'index', users: @users %>
+      <div class="row">
+        <h2 class="col-md-5 p-4">会員一覧</h2>
+      </div>
+      <div class="row">
+        <%= render 'index', users: @users %>
+      </div>
     </div>
 
   </div>

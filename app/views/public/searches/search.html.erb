@@ -27,7 +27,7 @@
         <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
           <div class="row">
             <% if @posts.blank? %>
-              <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
+              <p class="col-md-4 offset-md-2 mt-5">検索結果がございません</p>
             <% else %>
               <%= render 'public/posts/index', posts: @posts %>
             <% end %>
@@ -36,7 +36,7 @@
         <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
           <div class="row">
             <% if @users.blank? %>
-              <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
+              <p class="col-md-4 offset-md-2 mt-5">検索結果がございません</p>
             <% else %>
               <%= render 'public/users/index', users: @users %>
             <% end %>
@@ -45,7 +45,7 @@
         <div class="tab-pane fade" id="tab" role="tabpanel" aria-labelledby="tab-tab">
           <div class="row">
             <% if @tags.blank? %>
-              <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
+              <p class="col-md-4 offset-md-2 mt-5">検索結果がございません</p>
             <% else %>
               <%= render 'public/posts/tag_index', tags: @tags %>
             <% end %>
