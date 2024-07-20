@@ -14,7 +14,9 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    tag_list = params[:post][:tag_name].split(',')
     if @post.save
+      @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "投稿に成功しました"
     else
       render 'new'
@@ -29,10 +31,13 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join(',')
   end
 
   def update
+    tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
+      @post.save_tags(tag_list)
       redirect_to post_path(@post), notice: "更新に成功しました"
     else
       render "edit"
@@ -52,6 +57,11 @@ class Public::PostsController < ApplicationController
   def user_favorite_posts
     user = User.find(params[:user_id])
     @user_favorites = user.favorites
+  end
+
+  def tag_posts
+    @tag = Tag.find(params[:post_id])
+    @tag_posts = @tag.posts
   end
 
   private

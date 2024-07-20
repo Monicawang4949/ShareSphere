@@ -7,6 +7,10 @@
 
     <div class="col-md-8">
 
+      <div class="row">
+        <h2 class="col-md-5 p-4">"<%= @q %>" の検索結果</h2>
+      </div>
+
       <ul class="nav nav-pills nav-fill" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active btn btn-info" id="post-tab" style="font-size: 18px" data-toggle="tab" data-target="#post" type="button" role="tab" aria-controls="post" aria-selected="true">投稿結果</button>
@@ -38,7 +42,15 @@
             <% end %>
           </div>
         </div>
-        <div class="tab-pane fade" id="tab" role="tabpanel" aria-labelledby="tab-tab"></div>
+        <div class="tab-pane fade" id="tab" role="tabpanel" aria-labelledby="tab-tab">
+          <div class="row">
+            <% if @tags.blank? %>
+              <p class="col-md-4 offset-md-4 mt-5">検索結果はございません</p>
+            <% else %>
+              <%= render 'public/posts/tag_index', tags: @tags %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
     </div>

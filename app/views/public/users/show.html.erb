@@ -8,7 +8,7 @@
     <div class="col-md-8">
 
       <div class='row'>
-        <div class='col-md-1 mr-3'>
+        <div class='col-md-1'>
           <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
         </div>
         <div class='col-md-3' style="font-size: 18px">
@@ -22,10 +22,10 @@
           <p><%= link_to @user.followers.count, user_followers_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
         </div>
       </div>
-      <div class='row my-3'>
+      <div class='row pl-3'>
         <% if current_user.not_guest_user? %>
           <% if current_user == @user %>
-            <%= link_to "編集", edit_user_path(@user), class: "btn btn-outline-info m-3" %>
+            <%= link_to "個人情報編集", edit_user_path(@user), class: "btn btn-outline-info" %>
           <% else %>
             <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
           <% end %>
@@ -36,10 +36,10 @@
 
       <ul class="nav nav-pills nav-fill mt-5" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active btn btn-info" id="post-tab" style="font-size: 18px" data-toggle="tab" data-target="#post" type="button" role="tab" aria-controls="post" aria-selected="true">最近投稿</button>
+          <button class="nav-link active btn btn-info" id="post-tab" style="font-size: 18px" data-toggle="tab" data-target="#post" type="button" role="tab" aria-controls="post" aria-selected="true">ユーザー最近投稿</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link btn btn-info" id="user-tab" style="font-size: 18px" data-toggle="tab" data-target="#user" type="button" role="tab" aria-controls="user" aria-selected="false">最近いいねをした投稿</button>
+          <button class="nav-link btn btn-info" id="user-tab" style="font-size: 18px" data-toggle="tab" data-target="#user" type="button" role="tab" aria-controls="user" aria-selected="false">ユーザー最近いいねをした投稿</button>
         </li>
       </ul>
 
@@ -47,7 +47,7 @@
         <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
           <% if @latest_post.blank? %>
             <div class="row p-5">
-              <p class="col-md-8 mt-5">最近の投稿がございません</p>
+              <p class="col-md-8 mt-5">ユーザー最近の投稿がございません</p>
               <p class="col offset-md-1 mt-5"></p>
             </div>
           <% else %>
@@ -67,14 +67,14 @@
               </div>
             </div>
             <div class="row pl-5">
-              <%= link_to "投稿一覧", user_user_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
+              <%= link_to "ユーザー投稿一覧", user_user_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
             </div>
           <% end %>
         </div>
         <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
           <% if @latest_favorite_post.blank? %>
             <div class="row p-5">
-              <p class="col-md-8 mt-5">最近いいねをした投稿がございません</p>
+              <p class="col-md-8 mt-5">ユーザー最近いいねをした投稿がございません</p>
               <p class="col offset-md-1 mt-5"></p>
             </div>
           <% else %>
@@ -94,7 +94,7 @@
               </div>
             </div>
             <div class="row pl-5">
-              <%= link_to "最近いいねをした投稿", user_user_favorite_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
+              <%= link_to "ユーザー最近いいねをした投稿", user_user_favorite_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
             </div>
           <% end %>
         </div>

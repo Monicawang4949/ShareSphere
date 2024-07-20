@@ -6,7 +6,9 @@
     </div>
 
     <div class="col-md-8">
-      <h2><%= link_to @user.name, user_path(@user), style: "text-decoration: none; color: #0dcaf0" %> さんのフォロー</h2>
+      <div class="row">
+        <h2 class="col-md-5 p-4"><%= link_to @user.name, user_path(@user), style: "text-decoration: none; color: #0dcaf0" %> さんのフォロー</h2>
+      </div>
       <% if @users.exists? %>
         <%= render "public/users/index", users: @users %>
       <% else %>

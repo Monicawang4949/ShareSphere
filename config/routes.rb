@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     resources :posts do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
+      get 'tag_posts' => 'posts#tag_posts'
     end
     get "search" => "searches#search"
   end

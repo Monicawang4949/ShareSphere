@@ -6,6 +6,7 @@ class Public::SearchesController < ApplicationController
     if params[:q].present?
       @users = User.ransack(name_cont: @q).result
       @posts = Post.ransack(content_cont: @q).result
+      @tags = Tag.ransack(name_cont: @q).result
     else
       @users = []
       @posts = []

@@ -7,10 +7,10 @@
 
     <div class="col-md-8">
       <div class="row">
-        <h2 class="col-md-5 p-4">ユーザー投稿一覧</h2>
+        <h2 class="col-md-5 p-4">"<i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= @tag.name %>" タグに関する投稿</h2>
       </div>
       <div class="row">
-        <%= render 'public/posts/index', posts: @user_posts %>
+        <%= render 'public/posts/index', posts: @tag_posts %>
       </div>
     </div>
 

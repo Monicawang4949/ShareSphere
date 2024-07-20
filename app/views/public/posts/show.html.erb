@@ -29,6 +29,15 @@
       <div class='row p-3'>
         <%= @post.content %>
       </div>
+      <div class='row pl-3'>
+        <% @post.tags.each do |tag| %>
+          <div class='p-1'>
+            <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+              <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
       <div class='row p-3'>
         <p class='mr-3'><%= render "public/favorites/btn", post: @post %></p>
         <p>コメント数（<%= @post.comments.count %>）</p>

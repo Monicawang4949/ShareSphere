@@ -1,28 +1,28 @@
 <% posts.each do |post| %>
-  <div class="d-flex flex-row p-3">
-    <div class='col mt-4'>
-      <div class='row'>
-        <%= link_to post do %>
-          <%= image_tag post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;", class: "hover-zoom mb-3" %>
-        <% end %>
-      </div>
-      <div class='row'>
-        <%= link_to user_path(post.user), style: "color: #0dcaf0" do %>
-          <%= image_tag post.user.get_profile_image, class: "rounded-circle mx-3", size:'30x30' %>
-          <%= post.user.name %>
-        <% end %>
-      </div>
-      <div class='row mx-3'>
-        <%= post.title %>
-      </div>
-     <div class='row mx-3'>
-        <%= "tab button" %>
-      </div>
-      <div class='row mx-3'>
-        <%= render "public/favorites/btn", post: post %>
-      </div>
-      <div class='row mx-3'>
-        <p>コメント（<%= post.comments.count %>）</p>
+  <div class="d-flex flex-row pt-3">
+    <div class="card" style="width: 18rem; background: rgba(0, 0, 0, 0)">
+      <%= link_to post do %>
+        <%= image_tag post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;", class: "hover-zoom mb-3 card-img-top" %>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title">
+          <%= link_to user_path(post.user), style: " text-decoration: none;color: #0dcaf0" do %>
+            <%= image_tag post.user.get_profile_image, class: "rounded-circle mx-3", size:'30x30' %>
+            <%= post.user.name %>
+          <% end %>
+        </h5>
+        <p class="card-text">
+          <p><%= post.title %></p>
+          <p>
+          <% post.tags.each do |tag| %>
+            <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+              <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
+            <% end %>
+          <% end %>
+          </p>
+          <p>コメント（<%= post.comments.count %>）</p>
+          <p><%= render "public/favorites/btn", post: post %></p>
+        </p>
       </div>
     </div>
   </div>
