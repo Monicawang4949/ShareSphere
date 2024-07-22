@@ -29,10 +29,14 @@ class Public::UsersController < ApplicationController
     @users = User.all
   end
 
+  def settings
+    @user = current_user
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image, :email)
+    params.require(:user).permit(:name, :introduction, :profile_image, :email, :profile_is_released)
   end
 
   def ensure_guest_user

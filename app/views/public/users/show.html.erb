@@ -17,10 +17,17 @@
         </div>
 
         <div class='col-md-2 offset-md-2'>
+          <% if @user == current_user || @user.profile_is_released == true %>
             <p>フォロー数</p>
             <p><%= link_to @user.followings.count, user_followings_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
             <p>フォロワー数</p>
             <p><%= link_to @user.followers.count, user_followers_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
+          <% elsif @user.profile_is_released == false %>
+            <p>フォロー数</p>
+            <p>非公開設定</p>
+            <p>フォロワー数</p>
+            <p>非公開設定</p>
+          <% end %>
         </div>
 
         <div class='col-md-3'>
@@ -60,56 +67,70 @@
 
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
-          <% if @latest_post.blank? %>
+          <% if @user == current_user || @user.profile_is_released == true %>
+            <% if @latest_post.blank? %>
+              <div class="row p-5">
+                <p class="col-md-8 mt-5">ユーザー最近の投稿がございません</p>
+                <p class="col offset-md-1 mt-5"></p>
+              </div>
+            <% else %>
+              <div class="row">
+                <div class="col-md-2">
+                  <%= link_to post_path(@latest_post) do %>
+                    <%= image_tag @latest_post.get_post_image, class: "hover-zoom my-5", style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
+                  <% end %>
+                </div>
+                <div class="col-md-8 m-5">
+                  <div class="row m-5">
+                    <%= @latest_post.title %>
+                  </div>
+                  <div class="row m-5">
+                    <%= @latest_post.content %>
+                  </div>
+                </div>
+              </div>
+              <div class="row pl-5">
+                <%= link_to "ユーザー投稿一覧", user_user_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
+              </div>
+            <% end %>
+          <% elsif @user.profile_is_released == false %>
             <div class="row p-5">
-              <p class="col-md-8 mt-5">ユーザー最近の投稿がございません</p>
+              <p class="col-md-8 mt-5">ユーザーが非公開に設定したため閲覧できません</p>
               <p class="col offset-md-1 mt-5"></p>
-            </div>
-          <% else %>
-            <div class="row">
-              <div class="col-md-2">
-                <%= link_to post_path(@latest_post) do %>
-                  <%= image_tag @latest_post.get_post_image, class: "hover-zoom my-5", style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
-                <% end %>
-              </div>
-              <div class="col-md-8 m-5">
-                <div class="row m-5">
-                  <%= @latest_post.title %>
-                </div>
-                <div class="row m-5">
-                  <%= @latest_post.content %>
-                </div>
-              </div>
-            </div>
-            <div class="row pl-5">
-              <%= link_to "ユーザー投稿一覧", user_user_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
             </div>
           <% end %>
         </div>
         <div class="tab-pane fade" id="user" role="tabpanel" aria-labelledby="user-tab">
-          <% if @latest_favorite_post.blank? %>
+          <% if @user == current_user || @user.profile_is_released == true %>
+            <% if @latest_favorite_post.blank? %>
+              <div class="row p-5">
+                <p class="col-md-8 mt-5">ユーザー最近いいねをした投稿がございません</p>
+                <p class="col offset-md-1 mt-5"></p>
+              </div>
+            <% else %>
+              <div class="row">
+                <div class="col-md-2">
+                  <%= link_to post_path(@latest_favorite_post) do %>
+                    <%= image_tag @latest_favorite_post.get_post_image, class: "hover-zoom my-5", style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
+                  <% end %>
+                </div>
+                <div class="col-md-8 m-5">
+                  <div class="row m-5">
+                    <%= @latest_favorite_post.title %>
+                  </div>
+                  <div class="row m-5">
+                    <%= @latest_favorite_post.content %>
+                  </div>
+                </div>
+              </div>
+              <div class="row pl-5">
+                <%= link_to "ユーザー最近いいねをした投稿", user_user_favorite_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
+              </div>
+            <% end %>
+          <% elsif @user.profile_is_released == false %>
             <div class="row p-5">
-              <p class="col-md-8 mt-5">ユーザー最近いいねをした投稿がございません</p>
+              <p class="col-md-8 mt-5">ユーザーが非公開に設定したため閲覧できません</p>
               <p class="col offset-md-1 mt-5"></p>
-            </div>
-          <% else %>
-            <div class="row">
-              <div class="col-md-2">
-                <%= link_to post_path(@latest_favorite_post) do %>
-                  <%= image_tag @latest_favorite_post.get_post_image, class: "hover-zoom my-5", style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
-                <% end %>
-              </div>
-              <div class="col-md-8 m-5">
-                <div class="row m-5">
-                  <%= @latest_favorite_post.title %>
-                </div>
-                <div class="row m-5">
-                  <%= @latest_favorite_post.content %>
-                </div>
-              </div>
-            </div>
-            <div class="row pl-5">
-              <%= link_to "ユーザー最近いいねをした投稿", user_user_favorite_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
             </div>
           <% end %>
         </div>
