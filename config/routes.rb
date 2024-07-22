@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       get 'tag_posts' => 'posts#tag_posts'
     end
     get "search" => "searches#search"
+    resources :chats, only: [:show, :create]
   end
 
 # 管理者側

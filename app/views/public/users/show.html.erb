@@ -15,23 +15,38 @@
           <%= @user.name %></br>
           <%= @user.introduction %>
         </div>
-        <div class='col-md-2 offset-md-4'>
-          <p>フォロー数</p>
-          <p><%= link_to @user.followings.count, user_followings_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
-          <p>フォロワー数</p>
-          <p><%= link_to @user.followers.count, user_followers_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
+
+        <div class='col-md-2 offset-md-2'>
+            <p>フォロー数</p>
+            <p><%= link_to @user.followings.count, user_followings_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
+            <p>フォロワー数</p>
+            <p><%= link_to @user.followers.count, user_followers_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
         </div>
-      </div>
-      <div class='row pl-3'>
-        <% if current_user.not_guest_user? %>
-          <% if current_user == @user %>
-            <%= link_to "個人情報編集", edit_user_path(@user), class: "btn btn-outline-info" %>
-          <% else %>
-            <%= render "public/relationships/btn", user: @user, options: { class: ""} %>
-          <% end %>
-        <% else %>
-          <% "" %>
-        <% end %>
+
+        <div class='col-md-3'>
+          <div class='row pl-3'>
+            <% if current_user.not_guest_user? %>
+              <% if current_user == @user %>
+                <%= link_to edit_user_path(@user), class: "btn btn-outline-info mt-5" do %>
+                  <div><i class="fa-solid fa-user-pen" style="color: #74C0FC;"></i> 個人情報編集</div>
+                <% end %>
+              <% else %>
+                <div class='col'>
+                  <div class='row'><%= render "public/relationships/btn", user: @user, options: { class: ""} %></div>
+                  <% if current_user != @user && current_user.following?(@user) && @user.following?(current_user) %>
+                    <div class='row'>
+                      <%= link_to chat_path(@user.id) do %>
+                        <p class='btn btn-info m-3'><i class="fa-solid fa-comments" style="color: #ffffff;"></i> チャットする</p>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            <% else %>
+              <% "" %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
       <ul class="nav nav-pills nav-fill mt-5" id="myTab" role="tablist">

@@ -1,0 +1,45 @@
+<div class="container-fluid text-center" style="color: white; font-size: 18px">
+  <div class="row">
+
+    <div class="col-md-2 offset-md-1">
+      <%= render 'public/users/sidebar' %>
+    </div>
+
+    <div class="col-md-8">
+
+      <div class="row">
+        <h2 class="col-md-5 p-4" id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %> さんとのチャット</h2>
+      </div>
+
+      <div style="height: 600px; overflow-y: scroll">
+        <div class="message" style="width: 70%;">
+          <% @chats.each do |chat| %>
+            <% if chat.user_id == current_user.id %>
+              <%= render "public/chats/chat", chat: chat %>
+            <% else %>
+              <div class="left-container d-flex p-2">
+                <%= link_to @user do %>
+                  <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'40x40' %>
+                <% end %>
+                <p class=m-1 style="text-align: left;"><span style="background-color: #0dcaf0; padding: 5px; border-radius: 10px;"><%= chat.message %></span></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="row errors">
+          <%= render "layouts/errors", obj: @chat %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col d-flex justify-content-center m-5">
+      <%= form_with model: @chat, data: {remote: true} do |f| %>
+        <%= f.text_field :message , size: "50" %>
+        <%= f.submit "送信", class: "btn btn-outline-info" %>
+        <%= f.hidden_field :room_id %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
