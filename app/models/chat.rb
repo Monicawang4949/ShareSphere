@@ -5,6 +5,7 @@ class Chat < ApplicationRecord
   validates :message, presence: true, length: { maximum: 140 }
 
   after_create do
-    create_notification(user_id: chat.user_id)
+    notification_user_id = UserRoom.where(room_id: room.id).where.not(user_id: current_user.id).user_id
+    create_notification(user_id: notification_user_id, notifiable_type: “Chat”)
   end
 end
