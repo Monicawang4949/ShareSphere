@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     resources :chats, only: [:show, :create]
     get 'settings' => 'users#settings'
+    resources :notifications, only: [:index, :destroy]
   end
 
 # 管理者側

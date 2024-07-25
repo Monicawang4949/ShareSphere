@@ -1,0 +1,6 @@
+<div>
+  あなたが
+  <%= link_to notification.notifiable.follower.name, user_path(notification.notifiable.follower), style: "text-decoration: none; color: #0dcaf0" %>
+  さんにフォローされました
+  <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+</div>

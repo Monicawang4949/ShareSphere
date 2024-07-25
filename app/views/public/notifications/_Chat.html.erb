@@ -1,0 +1,7 @@
+<div>
+  <%= link_to notification.notifiable.user.name, user_path(notification.notifiable.user), style: "text-decoration: none; color: #0dcaf0" %>
+  さんから
+  <%= link_to "DMメッセージ", chat_path(notification.notifiable.user.id), style: "text-decoration: none; color: #0dcaf0" %>
+  がありました
+  <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+</div>

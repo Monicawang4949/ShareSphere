@@ -1,7 +1,14 @@
 <table class="table table-borderless">
   <tr><th><%= link_to "発見", root_path, class: "sidebar_link" %></th></tr>
   <tr><th><%= link_to "投稿", new_post_path, class: "sidebar_link" %></th></tr>
-  <tr><th><%= link_to "通知", root_path, class: "sidebar_link" %></th></tr>
+  <tr><th>
+    <% if current_user.notifications.where(is_readed: false).present? %>
+      <%= link_to "通知", notifications_path, class: "sidebar_link ml-4" %>
+      <span class="badge badge-danger"><%= current_user.notifications.where(is_readed: false).count %></span>
+    <% else %>
+      <%= link_to "通知", notifications_path, class: "sidebar_link" %>
+    <% end %>
+  </th></tr>
   <tr><th><%= link_to "設定", settings_path, class: "sidebar_link" %></th></tr>
   <tr><th><%= link_to "ログアウト", destroy_user_session_path, class: "sidebar_link", method: :delete %></th></tr>
 </table>
