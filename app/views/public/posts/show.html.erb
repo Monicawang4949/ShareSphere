@@ -5,31 +5,40 @@
       <%= render 'public/users/sidebar' %>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-3">
       <div class='row'>
         <div class='col-md-2'>
-          <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
-        </div>
-        <div class='col-md-3 mt-5'>
-          <%= @post.title %>
-        </div>
-        <div class='col-md-7'>
-          <% if current_user.not_guest_user? %>
-            <% if current_user = @user %>
-              <%= link_to edit_post_path(@post), class: "btn btn-outline-info m-5", style: "width: 15%" do %>
-                <i class="fa-regular fa-pen-to-square" style="color: #74C0FC;"> 編集</i>
-              <% end %></br>
-              <%= link_to @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger", style: "width: 15%" do %>
-                <i class="fa-regular fa-trash-can" style="color: #dc3545;"> 削除</i>
-              <% end %></br>
-            <% end %>
-          <% end %>
+          <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 500px; height: 500px; object-fit:cover;" %>
         </div>
       </div>
       <div class='row p-3'>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class='row'>
+        <%= link_to user_path(@user), style: "color: #0dcaf0; text-decoration: none;" do %>
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'80x80' %>
+          <%= @user.name %>
+        <% end %>
+        <% if current_user.not_guest_user? %>
+          <% if current_user = @user %>
+            <%= link_to edit_post_path(@post), class: "btn btn-outline-info m-5", style: "width: 15%" do %>
+              <i class="fa-regular fa-pen-to-square" style="color: #74C0FC;"> 投稿編集</i>
+            <% end %>
+            <%= link_to @post, method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-outline-danger m-5", style: "width: 15%" do %>
+              <i class="fa-regular fa-trash-can" style="color: #dc3545;"> 投稿削除</i>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class='row mt-5 pl-5'>
+        <%= @post.title %>
+      </div>
+      <div class='row mt-5 pl-5'>
         <%= @post.content %>
       </div>
-      <div class='row pl-3'>
+      <div class='row mt-3 pl-5'>
         <% @post.tags.each do |tag| %>
           <div class='p-1'>
             <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
@@ -38,28 +47,20 @@
           </div>
         <% end %>
       </div>
-      <div class='row p-3'>
-        <p class='mr-3'><%= render "public/favorites/btn", post: @post %></p>
-        <p>コメント数（<%= @post.comments.count %>）</p>
-      </div>
-    </div>
-
-    <div class="col-md-2">
-      <div class='row'>
-        <%= link_to user_path(@user) do %>
-          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
-        <% end %>
-      </div>
-      <div class='row p-4'>
-        <%= link_to user_path(@user), style: " text-decoration: none; color: #0dcaf0" do %>
-          <%= @user.name %>
-        <% end %>
+      <div class="row mt-5 pl-5">
+        <div class="col">
+          <div class='row'>
+            <p><%= render "public/favorites/btn", post: @post %></p>
+            <p class="ml-3">コメント数（<%= @post.comments.count %>）</p>
+          </div>
+        </div>
       </div>
     </div>
 
   </div>
-  <div class="row" style="height: 300px">
-    <div class="col-md-5 offset-md-3 pl-3">
+
+  <div class='row' style="height: 250px; overflow-y: scroll">
+    <div class="col-md-4 offset-md-4 mb-3">
       <%= render "public/comments/index", post: @post %>
     </div>
   </div>
@@ -68,6 +69,7 @@
       <%= render "public/comments/form", post: @post, comment: @comment %>
     </div>
   </div>
+
 </div>
 
 

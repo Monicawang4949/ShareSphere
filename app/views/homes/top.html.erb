@@ -1,28 +1,20 @@
 <div class="container-fluid text-center" style="color: white">
-  <div class="row">
     <% if user_signed_in? %>
-      <div class="col-md-2 offset-md-1">
-        <%= render 'public/users/sidebar' %>
-      </div>
-      <div class="col-md-8">
-      </div>
+      <%= render 'homes/user_random' %>
     <% elsif admin_signed_in? %>
-      <div class="col-md-2 offset-md-1">
-        <%= render 'admin/users/sidebar' %>
-      </div>
-      <div class="col-md-8">
-      </div>
+      <%= render 'homes/admin_random' %>
     <% else %>
-      <div style="width:100%; height: 150px;"></div>
-      <div style="width:100%; height: 300px; display: flex; justify-content: center; align-items: center;">
-        <div><h1 id="top-h1" style="font-size: 200px; color: #333;">ShareSphere</h1></div>
-      </div>
-      <div style="width:100%; height: 300px;">
-        <%= link_to "ゲストとしてログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-outline-info btn-lg mt-5", type: "button", method: :post %></br>
-        <%= link_to "ユーザーログイン", new_user_session_path, class: "btn btn-outline-info btn-lg mt-3", type: "button" %></br>
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info btn-lg my-3", type: "button" %></br>
-      </div>
-      <div style="width:100%; height: 150px;"></div>
+      <div class="row">
+        <div style="width:100%; height: 150px;"></div>
+        <div style="width:100%; height: 300px; display: flex; justify-content: center; align-items: center;">
+          <div><h1 id="top-h1" style="font-size: 200px; color: #333;">ShareSphere</h1></div>
+        </div>
+        <div style="width:100%; height: 300px;">
+          <%= link_to "ゲストとしてログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-outline-info btn-lg mt-5", type: "button", method: :post %></br>
+          <%= link_to "ユーザーログイン", new_user_session_path, class: "btn btn-outline-info btn-lg mt-3", type: "button" %></br>
+          <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info btn-lg my-3", type: "button" %></br>
+        </div>
+        <div style="width:100%; height: 150px;"></div>
+      <div>
     <% end %>
-  </div>
 </div>

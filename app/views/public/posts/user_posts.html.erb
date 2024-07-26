@@ -1,4 +1,4 @@
-<div class="container-fluid text-center" style="color: white">
+<div class="container-fluid text-center"style="color: white;">
   <div class="row">
 
     <div class="col-md-2 offset-md-1">
@@ -9,7 +9,7 @@
       <div class="row">
         <h2 class="col-md-5 p-4">ユーザー投稿一覧</h2>
       </div>
-      <div class="row">
+      <div class="row" style="height: 700px; overflow-y: scroll">
         <%= render 'public/posts/index', posts: @user_posts %>
       </div>
     </div>

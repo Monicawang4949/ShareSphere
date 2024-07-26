@@ -5,52 +5,54 @@
       <%= render 'admin/users/sidebar' %>
     </div>
 
-    <div class="col-md-5">
+    <div class="col-md-3">
       <div class='row'>
-        <div class='col-md-3'>
-          <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 200px; height: 200px; object-fit:cover;" %>
+        <div class='col-md-2'>
+          <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 500px; height: 500px; object-fit:cover;" %>
         </div>
-        <div class='col-md-4 mt-5' style=" color: white">
-          <%= @post.title %>
-        </div>
-        <div class='col-md-4'></div>
       </div>
-      <div class='row p-5'>
+      <div class='row p-3'>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class='row'>
+        <%= link_to admin_user_path(@user), style: "color: #0dcaf0; text-decoration: none;" do %>
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'80x80' %>
+          <%= @user.name %>
+        <% end %>
+      </div>
+      <div class='row mt-5'>
+        <%= @post.title %>
+      </div>
+      <div class='row mt-5'>
         <%= @post.content %>
       </div>
-      <div class='row pl-3'>
+      <div class='row mt-3'>
         <% @post.tags.each do |tag| %>
-          <div class='pl-1 ml-2'>
+          <div class='p-1'>
             <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
               <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
             <% end %>
           </div>
         <% end %>
       </div>
-      <div class='row p-5'>
-        <span>
-          いいね数（<%= @post.favorites.count %>）
-          コメント数（<%= @post.comments.count %>）
-        </span>
+      <div class="row mt-5">
+        <div class="col">
+          <div class='row p-3'>
+            <p>いいね数（<%= @post.favorites.count %>）</p>
+            <p class="ml-3">コメント数（<%= @post.comments.count %>）</p>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="col-md-2">
-      <div class='row'>
-        <%= link_to admin_user_path(@user) do %>
-          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
-        <% end %>
-      </div>
-      <div class='row p-4'>
-        <%= link_to admin_user_path(@user), style: " text-decoration: none; color: #0dcaf0" do %>
-          <%= @user.name %>
-        <% end %>
-      </div>
-    </div>
   </div>
-  <div class="row" style="height: 400px">
-    <div class="col-md-5 offset-md-3 pl-3">
+
+  <div class='row' style="height: 300px; overflow-y: scroll">
+    <div class="col-md-4 offset-md-4 mb-3">
       <%= render "admin/comments/index", post: @post %>
     </div>
   </div>
+
 </div>
