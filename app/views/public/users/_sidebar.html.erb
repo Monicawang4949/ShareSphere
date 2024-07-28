@@ -1,7 +1,7 @@
 <table class="table table-borderless text-center">
   <tr><th><%= link_to "発見", root_path, class: "sidebar_link" %></th></tr>
-  <tr><th><%= link_to "投稿", user_followings_path(current_user), class: "sidebar_link" %></th></tr>
-  <tr><th><%= link_to "フォロー", new_post_path, class: "sidebar_link" %></th></tr>
+  <tr><th><%= link_to "投稿", new_post_path, class: "sidebar_link" %></th></tr>
+  <tr><th><%= link_to "フォロー", user_followings_path(current_user), class: "sidebar_link" %></th></tr>
   <tr><th>
     <% if current_user.notifications.where(is_readed: false).present? %>
       <%= link_to "通知", notifications_path, class: "sidebar_link ml-4" %>
