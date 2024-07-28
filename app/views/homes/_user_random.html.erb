@@ -7,12 +7,14 @@
       <h2>発見タグ</h2>
     </div>
     <div class='row mt-3 pl-5'>
-      <% @tags.each do |tag| %>
-        <div class='p-1'>
-          <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none; font-size: 22px" do %>
-            <span class="badge badge-pill badge-secondary"><i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %></span>
-          <% end %>
-        </div>
+      <% if @tags.present? %>
+        <% @tags.each do |tag| %>
+          <div class='p-1'>
+            <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none; font-size: 22px" do %>
+              <span class="badge badge-pill badge-secondary"><i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %></span>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="row">
