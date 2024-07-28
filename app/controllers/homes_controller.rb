@@ -2,7 +2,9 @@ class HomesController < ApplicationController
   def top
     @post = Post.all.sample
     @user = @post.user
-    @tags = Tag.order("RANDOM()").limit(5)
+    if Tag.order("RANDOM()").limit(5).present?
+      @tags = Tag.order("RANDOM()").limit(5)
+    end
   end
 
   def about
