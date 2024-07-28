@@ -22,7 +22,7 @@
           <%= @user.name %>
         <% end %>
         <% if current_user.not_guest_user? %>
-          <% if current_user = @user %>
+          <% if current_user == @user %>
             <%= link_to edit_post_path(@post), class: "btn btn-outline-info m-5", style: "width: 15%" do %>
               <i class="fa-regular fa-pen-to-square" style="color: #74C0FC;"> 投稿編集</i>
             <% end %>
