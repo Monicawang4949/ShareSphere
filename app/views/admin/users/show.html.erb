@@ -1,4 +1,4 @@
-<div class="container-fluid text-center" style="color: white">
+<div class="container-fluid" style="color: white">
   <div class="row">
 
     <div class="col-md-2 offset-md-1">
@@ -15,13 +15,13 @@
           <%= @user.name %></br>
           <%= @user.introduction %>
         </div>
-        <div class='col offset-md-1'>
+        <div class='col offset-md-1 text-center'>
           <p>フォロー数</p>
           <p><%= link_to @user.followings.count, admin_user_followings_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
           <p>フォロワー数</p>
           <p><%= link_to @user.followers.count, admin_user_followers_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>
         </div>
-        <div class='col offset-md-1' style="color: #FF4F50">
+        <div class='col offset-md-1 text-center' style="color: #FF4F50">
           <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
             <p>ユーザーステータス設定：</p>
             <p><%= f.radio_button :user_status, "true" %> 使用可能 <%= f.radio_button :user_status, "false" %> 使用禁止 </p>

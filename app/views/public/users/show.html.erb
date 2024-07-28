@@ -1,4 +1,4 @@
-<div class="container-fluid text-center" style="color: white">
+<div class="container-fluid" style="color: white">
   <div class="row">
 
     <div class="col-md-2 offset-md-1">
@@ -16,7 +16,7 @@
           <%= @user.introduction %>
         </div>
 
-        <div class='col-md-2 offset-md-2'>
+        <div class='col-md-2 offset-md-2 text-center'>
           <% if @user == current_user || @user.profile_is_released == true %>
             <p>フォロー数</p>
             <p><%= link_to @user.followings.count, user_followings_path(@user), style: "text-decoration: none; color: #0dcaf0" %></p>

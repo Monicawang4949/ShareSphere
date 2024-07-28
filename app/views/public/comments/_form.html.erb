@@ -1,4 +1,6 @@
-<%= form_with model: [post, comment] do |f| %>
-  <%= f.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
-  <%= f.submit "送信",class: 'btn btn-outline-info mt-3' %>
-<% end %>
+  <%= form_with model: [post, comment] do |f| %>
+    <div class="text-center">
+      <%= f.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
+      <%= f.submit "送信",class: 'btn btn-outline-info mt-3' %>
+    </div>
+  <% end %>

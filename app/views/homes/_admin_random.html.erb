@@ -9,7 +9,7 @@
     <div class='row mt-3 pl-5'>
       <% @tags.each do |tag| %>
         <div class='p-1'>
-          <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none; font-size: 22px" do %>
+          <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none; font-size: 22px" do %>
             <span class="badge badge-pill badge-secondary"><i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %></span>
           <% end %>
         </div>
@@ -26,7 +26,7 @@
       </div>
       <div class='col-md-5 p-3 ml-3'>
         <div class="row">
-          <%= link_to user_path(@user), style: "color: #0dcaf0; text-decoration: none;" do %>
+          <%= link_to admin_user_path(@user), style: "color: #0dcaf0; text-decoration: none;" do %>
             <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'80x80' %>
             <%= @user.name %>
           <% end %>
@@ -40,7 +40,7 @@
         <div class='row pl-5 mb-4'>
           <% @post.tags.each do |tag| %>
             <div class='p-1'>
-              <%= link_to post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+              <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
                 <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
               <% end %>
             </div>
