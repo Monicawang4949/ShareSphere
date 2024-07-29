@@ -20,7 +20,7 @@
     </div>
     <div class="row">
       <div class='col-md-4'>
-        <%= link_to @post do %>
+        <%= link_to admin_post_path(@post) do %>
           <%= image_tag @post.get_post_image, style: "border-radius: 15%; width: 500px; height: 500px; object-fit:cover;", class: "hover-zoom mb-3 card-img-top" %>
         <% end %>
       </div>
