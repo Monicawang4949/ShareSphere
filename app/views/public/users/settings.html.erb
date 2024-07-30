@@ -14,7 +14,7 @@
         <%= link_to "こちらで設定します",edit_user_path(current_user), style: "text-decoration: none; color: #0dcaf0" %>
       </div>
       <div class="row">
-        <h4 class="mr-5">ユーザープロファイル設定</h4>
+        <h4 class="mr-5">ユーザープロフィール設定</h4>
         <%= form_with model: @user, url: user_path(@user) do |f| %>
           <%= f.radio_button :profile_is_released, true %> 公開
           <%= f.radio_button :profile_is_released, false %> 非公開
