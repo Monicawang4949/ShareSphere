@@ -8,10 +8,10 @@
     <div class="col-md-8">
 
       <div class='row'>
-        <div class='col-md-1'>
-          <%= image_tag @user.get_profile_image, class: "rounded-circle", size:'100x100' %>
+        <div class='col-md-2'>
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", style: "border-radius: 50%; width: 100%; object-fit:cover;" %>
         </div>
-        <div class='col-md-3' style="font-size: 18px">
+        <div class='col-md-3 pl-3' style="font-size: 18px">
           <%= @user.name %></br>
           <%= @user.introduction %>
         </div>
@@ -47,22 +47,31 @@
               </div>
             <% else %>
               <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-4">
                   <%= link_to admin_post_path(@latest_post) do %>
-                    <%= image_tag @latest_post.get_post_image, class: "hover-zoom my-5", style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
+                    <%= image_tag @latest_post.get_post_image, class: "hover-zoom my-4", style: "border-radius: 15%; width: 80%; object-fit:cover;" %>
                   <% end %>
                 </div>
-                <div class="col-md-8 m-5">
-                  <div class="row m-5">
+                <div class="col-md-6 m-5">
+                  <div class="row m-3">
                     <%= @latest_post.title %>
                   </div>
-                  <div class="row m-5">
+                  <div class="row m-3">
                     <%= @latest_post.content %>
+                  </div>
+                  <div class="row m-3">
+                    <% @latest_post.tags.each do |tag| %>
+                      <div class='p-1'>
+                        <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+                          <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
+                        <% end %>
+                      </div>
+                    <% end %>
                   </div>
                 </div>
               </div>
               <div class="row pl-5">
-                <%= link_to "ユーザー投稿一覧", admin_user_user_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
+                <%= link_to "ユーザー投稿一覧", admin_user_user_posts_path(@user), class: "btn btn-outline-info m-2", style: "width: 25%" %>
               </div>
             <% end %>
         </div>
@@ -74,22 +83,43 @@
             </div>
           <% else %>
             <div class="row">
-              <div class="col-md-2">
+              <div class="col-md-4">
                 <%= link_to admin_post_path(@latest_favorite_post) do %>
-                  <%= image_tag @latest_favorite_post.get_post_image, class: "hover-zoom my-5", style: "border-radius: 15%; width: 300px; height: 300px; object-fit:cover;" %>
+                  <%= image_tag @latest_favorite_post.get_post_image, class: "hover-zoom my-4", style: "border-radius: 15%; width: 80%; object-fit:cover;" %>
                 <% end %>
               </div>
-              <div class="col-md-8 m-5">
-                <div class="row m-5">
+              <div class="col-md-6 m-5">
+                <div class="row">
+                  <div class="col-2">
+                    <%= link_to admin_user_path(@latest_favorite_post.user) do %>
+                      <%= image_tag @latest_favorite_post.user.get_profile_image, class: "rounded-circle", style: "border-radius: 50%; width: 100%; object-fit:cover;" %>
+                    <% end %>
+                  </div>
+                  <div class="col-2 m-4">
+                    <%= link_to admin_user_path(@latest_favorite_post.user) do %>
+                      <p style="text-decoration: none; color: #0dcaf0"><%= @latest_favorite_post.user.name %></p>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="row m-3">
                   <%= @latest_favorite_post.title %>
                 </div>
-                <div class="row m-5">
+                <div class="row m-3">
                   <%= @latest_favorite_post.content %>
+                </div>
+                <div class="row m-3">
+                  <% @latest_favorite_post.tags.each do |tag| %>
+                    <div class='p-1'>
+                      <%= link_to admin_post_tag_posts_path(tag), style: "color: #0dcaf0; text-decoration: none;" do %>
+                        <i class="fa-solid fa-hashtag" style="color: #74C0FC;"></i><%= tag.name %>
+                      <% end %>
+                    </div>
+                  <% end %>
                 </div>
               </div>
             </div>
             <div class="row pl-5">
-              <%= link_to "ユーザー最近いいねをした投稿", admin_user_user_favorite_posts_path(@user), class: "btn btn-outline-info m-5", style: "width: 25%" %>
+              <%= link_to "ユーザー最近いいねをした投稿", admin_user_user_favorite_posts_path(@user), class: "btn btn-outline-info m-2", style: "width: 25%" %>
             </div>
           <% end %>
         </div>

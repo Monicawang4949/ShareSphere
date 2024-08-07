@@ -10,8 +10,9 @@ class Post < ApplicationRecord
 
   has_one_attached :post_image
 
-  validates :title, length: { minimum: 2, maximum: 50 }
-  validates :content, length: { maximum: 300 }
+  validates :title, length: { minimum: 2, maximum: 50 }, presence: { message: 'を入力してください' }
+  validates :content, length: { maximum: 300 }, presence: { message: 'を入力してください' }
+  validates :post_image, presence: { message: 'を選択してください' }, blob: { content_type: :image }
 
   def get_post_image
     (post_image.attached?) ? post_image : 'no_image.jpg'
