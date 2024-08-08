@@ -15,10 +15,9 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     tag_list = params[:post][:tag_name].split(',')
-    tags = Vision.get_image_data(post_params[:post_image])
+    ai_tags = Vision.get_image_data(post_params[:post_image])
     if @post.save
-      @post.save_tags(tag_list)
-      @post.save_tags(tags)
+      @post.save_tags(tag_list + ai_tags)
       # tags.each do |tag|
       #   @post.tags.create(name: tag)
       # end
