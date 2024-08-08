@@ -9,7 +9,7 @@
 
       <div class='row'>
         <div class='col-md-2'>
-          <%= image_tag @user.get_profile_image, class: "rounded-circle", style: "border-radius: 50%; width: 100%; object-fit:cover;" %>
+          <%= image_tag @user.get_profile_image, class: "rounded-circle", style: "border-radius: 50%; width: 200px; height: 200px; object-fit:cover;" %>
         </div>
         <div class='col-md-3 pl-3' style="font-size: 18px">
           <%= @user.name %></br>
@@ -49,7 +49,7 @@
               <div class="row">
                 <div class="col-md-4">
                   <%= link_to admin_post_path(@latest_post) do %>
-                    <%= image_tag @latest_post.get_post_image, class: "hover-zoom my-4", style: "border-radius: 15%; width: 80%; object-fit:cover;" %>
+                    <%= image_tag @latest_post.get_post_image, class: "hover-zoom my-4", style: "border-radius: 15%; width: 400px; height: 400px; object-fit:cover;" %>
                   <% end %>
                 </div>
                 <div class="col-md-6 m-5">
@@ -85,14 +85,14 @@
             <div class="row">
               <div class="col-md-4">
                 <%= link_to admin_post_path(@latest_favorite_post) do %>
-                  <%= image_tag @latest_favorite_post.get_post_image, class: "hover-zoom my-4", style: "border-radius: 15%; width: 80%; object-fit:cover;" %>
+                  <%= image_tag @latest_favorite_post.get_post_image, class: "hover-zoom my-4", style: "border-radius: 15%; width: 400px; height: 400px; object-fit:cover;" %>
                 <% end %>
               </div>
               <div class="col-md-6 m-5">
                 <div class="row">
                   <div class="col-2">
                     <%= link_to admin_user_path(@latest_favorite_post.user) do %>
-                      <%= image_tag @latest_favorite_post.user.get_profile_image, class: "rounded-circle", style: "border-radius: 50%; width: 100%; object-fit:cover;" %>
+                      <%= image_tag @latest_favorite_post.user.get_profile_image, class: "rounded-circle", style: "border-radius: 50%; width: 80px; height: 80px; object-fit:cover;" %>
                     <% end %>
                   </div>
                   <div class="col-2 m-4">
