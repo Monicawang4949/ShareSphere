@@ -1,6 +1,6 @@
 <div>
   あなたが投稿した
-  <%= link_to notification.notifiable.post.title, post_path(notification.notifiable.post), style: "text-decoration: none; color: #0dcaf0" %>
+  <%= link_to notification.notifiable.title, post_path(notification.notifiable), style: "text-decoration: none; color: #0dcaf0" %>
   が
   <%= link_to notification.notifiable.user.name, user_path(notification.notifiable.user), style: "text-decoration: none; color: #0dcaf0" %>
   さんにコメントされました
