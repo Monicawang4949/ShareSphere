@@ -49,7 +49,7 @@ Rails.application.routes.draw do
       get 'tag_posts' => 'posts#tag_posts'
     end
     get "search" => "searches#search"
-    resources :tags, only: [:index]
+    resources :tags, only: [:index, :destroy]
 
   end
 

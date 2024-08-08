@@ -21,7 +21,11 @@
             (<%= tag.posts.count %>)
           <% end %>
         </td>
-        <td style="width: 40%"></td>
+        <td style="width: 40%">
+          <% if tag.posts.count == 0 %>
+            <%= link_to "削除", admin_tag_path(tag), class: "btn btn-sm btn-outline-info", method: :delete %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
