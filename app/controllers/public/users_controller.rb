@@ -26,7 +26,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.page(params[:page]).per(6)
+    @users = User.all.page(params[:page]).per(8)
   end
 
   def settings
