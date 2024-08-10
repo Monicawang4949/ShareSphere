@@ -14,8 +14,10 @@
   <body style="background: linear-gradient(to left, #000033, #000000, #000033);">
     <%= render 'layouts/header' %>
     <%= render 'layouts/notice' %>
-    <div>
-      <%= yield %>
+    <div style="min-height: 900px">
+      <div style="padding: 20px; padding-bottom: 50px">
+        <%= yield %>
+      </div>
     </div>
     <%= render 'layouts/footer' %>
   </body>

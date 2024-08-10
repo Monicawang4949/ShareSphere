@@ -4,9 +4,9 @@ class Admin::SearchesController < ApplicationController
   def search
     @q = params[:q]
     if params[:q].present?
-      @users = User.ransack(name_cont: @q).result
-      @posts = Post.ransack(content_cont: @q).result
-      @tags = Tag.ransack(name_cont: @q).result
+      @users = User.ransack(name_cont: @q).result.page(params[:page]).per(8)
+      @posts = Post.ransack(content_cont: @q).result.page(params[:page]).per(10)
+      @tags = Tag.ransack(name_cont: @q).result.page(params[:page]).per(12)
     else
       @users = []
       @posts = []
